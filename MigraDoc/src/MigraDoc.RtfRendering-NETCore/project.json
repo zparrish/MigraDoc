@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "MigraDoc.DocumentObjectModel-NETCore": "1.0.0-*",
+    "MigraDoc.Rendering-NETCore": "1.0.0-*",
+    "NETStandard.Library": "1.5.0-rc2-24027",
+    "PdfSharp-NETCore": "1.0.0-*",
+    "PdfSharp.Charting-NETCore": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "netstandard1.5": {
+      "imports": "dnxcore50"
+    }
+  },
+
+  "buildOptions": {
+    "define": [ "NETCORE" ],
+    "keyFile": "StrongnameKey.snk",
+    "compile": {
+      "include": [
+        "../MigraDoc.RtfRendering"
+      ],
+      "exclude": [
+        "../MigraDoc.RtfRendering/bin",
+        "../MigraDoc.RtfRendering/obj",
+        "../MigraDoc.RtfRendering/garbage",
+        "../MigraDoc.RtfRendering/*.csproj",
+        "../MigraDoc.RtfRendering/*.csproj.user",
+        "../MigraDoc.RtfRendering/*.csproj.txt",
+        "../MigraDoc.RtfRendering/StrongnameKey.snk",
+        "../MigraDoc.RtfRendering/RtfRendering.Resources/Messages*.restext",
+        "../MigraDoc.RtfRendering/RtfRendering.Resources/Messages2*.resx",
+        "../MigraDoc.RtfRendering/RtfRendering.Resources/PDF.*"
+      ]
+    },
+    "embed": {
+      "mappings": {
+        "MigraDoc.RtfRendering.Resources.Messages": "../MigraDoc.RtfRendering/RtfRendering.Resources/Messages2.resx",
+        "MigraDoc.RtfRendering.Resources.PDF.png": "../MigraDoc.RtfRendering/RtfRendering.Resources/PDF.png"
+      }
+    }
+  }
+}

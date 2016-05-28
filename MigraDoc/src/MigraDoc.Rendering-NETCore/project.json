@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "MigraDoc.DocumentObjectModel-NETCore": "1.0.0-*",
+    "NETStandard.Library": "1.5.0-rc2-24027",
+    "PdfSharp-NETCore": "1.0.0-*",
+    "PdfSharp.Charting-NETCore": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "netstandard1.5": {
+      "imports": "dnxcore50"
+    }
+  },
+
+  "buildOptions": {
+    "define": [ "CORE;CORE_WITH_GDI;NETCORE" ],
+    "keyFile": "StrongnameKey.snk",
+    "compile": {      
+      "include": [
+        "../MigraDoc.Rendering"
+      ],
+      "exclude": [
+        "../MigraDoc.Rendering/bin",
+        "../MigraDoc.Rendering/obj",
+        "../MigraDoc.Rendering/*.csproj",
+        "../MigraDoc.Rendering/*.csproj.user",
+        "../MigraDoc.Rendering/StrongnameKey.snk",
+        "../MigraDoc.Rendering/Rendering.Forms",
+        "../MigraDoc.Rendering/Rendering.Printing",
+        "../MigraDoc.Rendering/Rendering.Windows",
+        "../MigraDoc.Rendering/Rendering.Resources/Messages*.restext",
+        "../MigraDoc.Rendering/Rendering.Resources/Messages2*.resx"
+      ]
+    },
+    "embed": {
+      "mappings": {
+        "MigraDoc.Rendering.Resources.Messages": "../MigraDoc.Rendering/Rendering.Resources/Messages2.resx"
+      }
+    }
+  }
+}
