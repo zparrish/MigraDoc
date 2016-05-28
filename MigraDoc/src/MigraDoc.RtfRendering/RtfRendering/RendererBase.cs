@@ -35,6 +35,7 @@ using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.DocumentObjectModel.Shapes;
 using MigraDoc.DocumentObjectModel.Internals;
+using System.Reflection;
 
 namespace MigraDoc.RtfRendering
 {

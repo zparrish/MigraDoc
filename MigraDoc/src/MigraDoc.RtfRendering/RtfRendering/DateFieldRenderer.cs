@@ -210,7 +210,12 @@ namespace MigraDoc.RtfRendering
                         }
                         else
                         {
+#if !NETCORE
                             rtfFrmt2 += dtfInfo.DateSeparator;
+#else
+                            rtfFrmt2 += DateTime.Now.ToString("%/", dtfInfo);
+#endif
+
                         }
                         break;
 
@@ -222,7 +227,11 @@ namespace MigraDoc.RtfRendering
                         }
                         else
                         {
+#if !NETCORE
                             rtfFrmt2 += dtfInfo.TimeSeparator;
+#else
+                            rtfFrmt2 += DateTime.Now.ToString("%:", dtfInfo);
+#endif
                         }
                         break;
 

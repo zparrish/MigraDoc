@@ -58,7 +58,7 @@ namespace MigraDoc.DocumentObjectModel.Internals
 
         public object CreateValue()
         {
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
             ConstructorInfo constructorInfo = ValueType.GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, Type.EmptyTypes, null);
 #else
             var constructorInfos = ValueType.GetTypeInfo().DeclaredConstructors;
@@ -107,7 +107,7 @@ namespace MigraDoc.DocumentObjectModel.Internals
             if (type == typeof(NEnum))
             {
                 Type valueType = attr.Type;
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
                 Debug.Assert(valueType.IsSubclassOf(typeof(Enum)), "NEnum must have 'Type' attribute with the underlying type");
 #else
                 Debug.Assert(valueType.GetTypeInfo().IsSubclassOf(typeof(Enum)), "NEnum must have 'Type' attribute with the underlying type");
@@ -115,7 +115,7 @@ namespace MigraDoc.DocumentObjectModel.Internals
                 return new NullableDescriptor(name, valueType, type, memberInfo, flags);
             }
 
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
             if (type.IsSubclassOf(typeof(ValueType)))
 #else
             if (type.GetTypeInfo().IsSubclassOf(typeof(ValueType)))

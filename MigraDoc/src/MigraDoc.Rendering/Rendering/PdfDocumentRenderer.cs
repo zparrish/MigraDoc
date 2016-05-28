@@ -132,7 +132,7 @@ namespace MigraDoc.Rendering
         void PrepareDocumentRenderer(bool prepareCompletely)
         {
             if (_document == null)
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
                 throw new InvalidOperationException(Messages2.PropertyNotSetBefore("DocumentRenderer", MethodBase.GetCurrentMethod().Name));
 #else
                 throw new InvalidOperationException(Messages2.PropertyNotSetBefore("DocumentRenderer", "PrepareDocumentRenderer"));

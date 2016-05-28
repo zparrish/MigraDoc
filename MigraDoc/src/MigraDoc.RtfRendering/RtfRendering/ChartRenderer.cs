@@ -320,7 +320,13 @@ namespace MigraDoc.RtfRendering
             finally
             {
                 if (imageFile != null)
+                {
+#if !NETCORE
                     imageFile.Close();
+#else
+                    imageFile.Dispose();
+#endif
+                }
             }
         }
 

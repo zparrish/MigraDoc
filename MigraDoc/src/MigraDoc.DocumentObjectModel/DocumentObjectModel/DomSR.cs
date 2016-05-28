@@ -178,7 +178,7 @@ namespace MigraDoc.DocumentObjectModel
             // ... where T : Enum
             // is not implemented in C# because nobody has done this.
             // See Eric Lippert on this topic: http://stackoverflow.com/questions/1331739/enum-type-constraints-in-c-sharp
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
             Debug.Assert(typeof (T).IsSubclassOf(typeof(Enum)));
 #else
             Debug.Assert(typeof(T).GetTypeInfo().IsSubclassOf(typeof(Enum)));
@@ -244,7 +244,7 @@ namespace MigraDoc.DocumentObjectModel
             {
                 if (_resmngr == null)
                 {
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
                     _resmngr = new ResourceManager("MigraDoc.DocumentObjectModel.Resources.Messages", Assembly.GetExecutingAssembly());
 #else
                     _resmngr = new ResourceManager("MigraDoc.DocumentObjectModel.Resources.Messages", typeof(DomSR).GetTypeInfo().Assembly);

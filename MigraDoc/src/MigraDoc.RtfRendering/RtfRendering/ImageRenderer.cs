@@ -170,8 +170,12 @@ namespace MigraDoc.RtfRendering
 
                 case ".pdf":
                     // Show a PDF logo in RTF document
-                    _imageFile =
-                      Assembly.GetExecutingAssembly().GetManifestResourceStream("MigraDoc.RtfRendering.Resources.PDF.png");
+#if !NETFX_CORE && !NETCORE
+                    _imageFile = Assembly.GetExecutingAssembly().GetManifestResourceStream("MigraDoc.RtfRendering.Resources.PDF.png");
+#else
+                    _imageFile = typeof(ImageRenderer).GetTypeInfo().Assembly.GetManifestResourceStream("MigraDoc.RtfRendering.Resources.PDF.png");
+#endif
+                    
                     _rtfWriter.WriteControl("pngblip");
                     break;
 
@@ -313,7 +317,11 @@ namespace MigraDoc.RtfRendering
                         _rtfWriter.WriteText("0");
                     _rtfWriter.WriteText(strVal);
                 }
+#if !NETCORE
                 _imageFile.Close();
+#else
+                _imageFile.Dispose();
+#endif
             }
         }
 

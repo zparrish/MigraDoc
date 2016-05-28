@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>PDFsharp-MigraDoc-net46</id>
-        <version>1.50.4000-beta3b</version>
+        <version>1.50.4000-beta3b2</version>
         <title>PDFsharp + MigraDoc (net46)</title>
         <authors>zparrish</authors>
         <owners>zparrish</owners>
@@ -20,7 +20,7 @@
         <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\de\*.*" target="lib\net46\de" />
         <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\MigraDoc.*.dll" target="lib\net46" />
         <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\MigraDoc.*.xml" target="lib\net46" />
-        <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\PdfSharp.*.dll" target="lib\net46" />
-        <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\PdfSharp.*.xml" target="lib\net46" />
+        <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\PdfSharp*.dll" target="lib\net46" />
+        <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\PdfSharp*.xml" target="lib\net46" />
     </files>
 </package>

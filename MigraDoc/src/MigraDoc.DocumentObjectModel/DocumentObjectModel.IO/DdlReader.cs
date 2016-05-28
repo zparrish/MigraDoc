@@ -71,7 +71,7 @@ namespace MigraDoc.DocumentObjectModel.IO
         {
             _fileName = filename;
             _errorManager = errors;
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
             _reader = new StreamReader(filename, Encoding.UTF8);
 #else
             _reader = new StreamReader(null, Encoding.UTF8);
@@ -107,7 +107,7 @@ namespace MigraDoc.DocumentObjectModel.IO
         {
             if (_doClose && _reader != null)
             {
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
                 _reader.Close();
 #else
                 _reader.Dispose();
@@ -190,7 +190,7 @@ namespace MigraDoc.DocumentObjectModel.IO
             {
                 if (stringReader != null)
                 {
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
                     stringReader.Close();
 #else
                     stringReader.Dispose();
@@ -250,7 +250,7 @@ namespace MigraDoc.DocumentObjectModel.IO
             {
                 if (stringReader != null)
                 {
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
                     stringReader.Close();
 #else
                     stringReader.Dispose();

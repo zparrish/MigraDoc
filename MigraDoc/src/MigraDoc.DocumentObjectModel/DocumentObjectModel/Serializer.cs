@@ -34,6 +34,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using MigraDoc.DocumentObjectModel.Internals;
 
@@ -431,7 +432,7 @@ namespace MigraDoc.DocumentObjectModel
                 sb.Replace("\"", "\\\"");
                 WriteLine(valueName + " = \"" + sb + "\"");
             }
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
             else if (type == typeof(int) || type.BaseType == typeof(Enum) || type == typeof(Color))
 #else
             else if (type == typeof(int) || type.GetTypeInfo().BaseType == typeof(Enum) || type == typeof(Color))

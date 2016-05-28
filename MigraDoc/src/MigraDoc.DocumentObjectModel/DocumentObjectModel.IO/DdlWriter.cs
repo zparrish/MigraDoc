@@ -55,7 +55,12 @@ namespace MigraDoc.DocumentObjectModel.IO
         /// </summary>
         public DdlWriter(string filename)
         {
+#if !NETCORE
             _writer = new StreamWriter(filename, false, Encoding.UTF8);
+#else       
+            _writer = File.CreateText(filename);
+#endif
+
             _serializer = new Serializer(_writer);
         }
 #endif
@@ -77,7 +82,11 @@ namespace MigraDoc.DocumentObjectModel.IO
 
             if (_writer != null)
             {
+#if !NETCORE
                 _writer.Close();
+#else
+                _writer.Dispose();
+#endif
                 _writer = null;
             }
         }
@@ -167,7 +176,7 @@ namespace MigraDoc.DocumentObjectModel.IO
                     wrt.Close();
                 if (writer != null)
                 {
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
                     writer.Close();
 #else
                     writer.Dispose();
@@ -219,7 +228,7 @@ namespace MigraDoc.DocumentObjectModel.IO
                     wrt.Close();
                 if (writer != null)
                 {
-#if !NETFX_CORE
+#if !NETFX_CORE && !NETCORE
                     writer.Close();
 #else
                     writer.Dispose();

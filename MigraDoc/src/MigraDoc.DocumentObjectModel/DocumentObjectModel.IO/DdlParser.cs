@@ -37,6 +37,7 @@ using MigraDoc.DocumentObjectModel.Internals;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.DocumentObjectModel.Shapes;
 using MigraDoc.DocumentObjectModel.Shapes.Charts;
+using System.Reflection;
 
 namespace MigraDoc.DocumentObjectModel.IO
 {

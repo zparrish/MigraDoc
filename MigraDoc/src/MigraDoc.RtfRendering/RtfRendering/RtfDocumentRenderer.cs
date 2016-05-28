@@ -31,6 +31,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Internals;
 using MigraDoc.DocumentObjectModel.Visitors;
@@ -71,7 +72,11 @@ namespace MigraDoc.RtfRendering
                 if (workingDirectory != null)
                     path = Path.Combine(workingDirectory, file);
 
+#if !NETCORE
                 strmWrtr = new StreamWriter(path, false, System.Text.Encoding.Default);
+#else
+                strmWrtr = File.CreateText(path);
+#endif
                 _rtfWriter = new RtfWriter(strmWrtr);
                 WriteDocument();
             }
@@ -80,7 +85,11 @@ namespace MigraDoc.RtfRendering
                 if (strmWrtr != null)
                 {
                     strmWrtr.Flush();
+#if !NETCORE
                     strmWrtr.Close();
+#else
+                    strmWrtr.Dispose();
+#endif
                 }
             }
         }
@@ -106,7 +115,11 @@ namespace MigraDoc.RtfRendering
             StreamWriter strmWrtr = null;
             try
             {
+#if !NETCORE
                 strmWrtr = new StreamWriter(stream, System.Text.Encoding.Default);
+#else
+                strmWrtr = new StreamWriter(stream);
+#endif
                 _document = document;
                 _docObject = document;
                 _workingDirectory = workingDirectory;
@@ -121,7 +134,13 @@ namespace MigraDoc.RtfRendering
                     if (stream != null)
                     {
                         if (closeStream)
+                        {
+#if !NETCORE
                             strmWrtr.Close();
+#else
+                            strmWrtr.Dispose();
+#endif
+                        }
                         else
                             stream.Position = 0; // Reset the stream position if the stream is kept open.
                     }
@@ -154,7 +173,13 @@ namespace MigraDoc.RtfRendering
             finally
             {
                 if (writer != null)
+                {
+#if !NETCORE
                     writer.Close();
+#else
+                    writer.Dispose();
+#endif
+                }
             }
         }
 
