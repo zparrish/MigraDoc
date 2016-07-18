@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata>
+        <id>PDFsharp-MigraDoc-netcore</id>
+        <version>1.50.4000-beta3b3</version>
+        <title>PDFsharp + MigraDoc (netcore)</title>
+        <authors>zparrish</authors>
+        <owners>zparrish</owners>
+        <licenseUrl>http://www.pdfsharp.net/MigraDoc_License.ashx</licenseUrl>
+        <projectUrl>https://github.com/zparrish/MigraDoc</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>This is a fork of PdfSharp + MigraDoc (https://github.com/empira/MigraDoc). The only difference is that it is built targeting .NET Core 1.0.</description>
+        <summary>Just like PdfSharp + MigraDoc, but targeting .NET Core 1.0.</summary>
+        <tags>PdfSharp MigraDoc</tags>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
+        </frameworkAssemblies>
+    </metadata>
+    <files>
+        <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\de\*.*" target="lib\netstandard1.6\de" />
+        <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\MigraDoc.*.dll" target="lib\netstandard1.6" />
+        <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\MigraDoc.*.xml" target="lib\netstandard1.6" />
+        <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\PdfSharp*.dll" target="lib\netstandard1.6" />
+        <file src="MigraDoc\src\MigraDoc.RtfRendering\bin\Release\PdfSharp*.xml" target="lib\netstandard1.6" />
+    </files>
+</package>
